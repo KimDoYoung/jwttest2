@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 
-const config = require('./config');
+const config = require('@config/config');
 const port = process.env.PORT || 3000;
 
 const app = express();
@@ -18,7 +18,9 @@ app.set('jwt-secret', config.secretKey);
 app.get('/', (req, res) => {
   res.send('Hello JWT');
 });
+
 app.use('/api', require('./router/api'));
+
 app.listen(port, () => {
   console.log('listening .. port : ', port);
 });

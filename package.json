@@ -4,7 +4,14 @@
   "description": "jwt test2",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "link-module-alias"
+  },
+  "_moduleAliases": {
+    "@lib": "lib",
+    "@models": "models",
+    "@config": "config",
+    "@api": "router/api"
   },
   "author": "KDY",
   "license": "ISC",
@@ -15,5 +22,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.5.1",
     "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "link-module-alias": "^1.2.0"
   }
 }

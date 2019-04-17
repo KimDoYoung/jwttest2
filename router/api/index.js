@@ -1,6 +1,7 @@
+// router/index.js
 const router = require('express').Router();
-const auth = require('./auth/index');
-const user = require('./user/index');
+const auth = require('./auth');
+const user = require('./user');
 
 router.use('/auth', auth);
 router.use('/user', user);

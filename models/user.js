@@ -3,12 +3,18 @@ const bcrypt = require('bcrypt-nodejs');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
-  username: String,
-  password: String,
-  name: String,
-  email: String,
-});
+const userSchema = new Schema(
+  {
+    username: String,
+    password: String,
+    name: String,
+    email: String,
+  },
+  {
+    timestamps: true,
+    collection: 'users',
+  }
+);
 
 //저장전에 password를 hash처리
 userSchema.pre('save', function(next) {
@@ -24,7 +30,7 @@ userSchema.pre('save', function(next) {
 userSchema.methods.verify = function(password) {
   const user = this;
   try {
-    return bcrypt.compareSync(user.password, password);
+    return bcrypt.compareSync(password, user.password);
   } catch (error) {
     console.error(error);
     return false;
